@@ -1,29 +1,25 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import Layout from './_layout';
-import { Code, CodeBlock, dracula } from "react-code-blocks";
+import { CodeBlock, dracula } from "react-code-blocks";
 
 // define props for react-code-blocks 
 
 interface HeroCodeBlock {
   language: string;
   showLineNumbers: boolean;
-  theme: string;
   text: string;
 }
 
 
 function HeroCodeBlock(props: HeroCodeBlock) {
-  const {language, showLineNumbers, theme, text} = props;
+  const {language, showLineNumbers, text} = props;
 
   return (
     <CodeBlock
       text={text}
       language={language}
       showLineNumbers={showLineNumbers}
-      theme={theme}
+      theme={dracula}
       codeBlock
     />
   );
@@ -32,10 +28,9 @@ function HeroCodeBlock(props: HeroCodeBlock) {
  
 
 export default function Home() {
-  const blockLanguage = "javascript";
+  const blockLanguage = "html"
   const showLineNumbers = false 
-  const blockTheme = "dracula" 
-  const blockText = " function showSnippet() "
+  const blockText = "<h1>Your Snippet here<h1>"
   
   return (
     <Layout>
@@ -45,7 +40,6 @@ export default function Home() {
             <HeroCodeBlock 
               language={blockLanguage}
               showLineNumbers={showLineNumbers}
-              theme={blockTheme}
               text={blockText}
             />
             <div>
