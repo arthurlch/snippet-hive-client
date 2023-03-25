@@ -34,8 +34,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </div>
-      {children}
-
+      <main>
+        {children}
+      </main>
       <footer className='footer footer-center p-10 '>
         <div>
           <svg
