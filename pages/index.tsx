@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Layout from './_layout';
 import { CodeBlock, dracula } from 'react-code-blocks';
 import { FiCode } from 'react-icons/fi';
@@ -59,32 +58,32 @@ function FeatureCards() {
   return (
     <div className="container mx-auto ml-auto">
       <div className=" flex flex-wrap justify-center items-center gap-6 columns-1 py-28 my-23">
-        <div className="card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
+        <div className=" py-4 card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
           <div className="flex flex-wrap justify-center items-center">
             <FiCode />
           </div>
           <div className="card-body">
-            <h2 className="card-title">Any Language</h2>
+            <h2 className="card-title text-accent">Any Language</h2>
             <p>You can simply paste any snippet from any common languages.</p>
           </div>
         </div>
 
-        <div className="card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
+        <div className=" py-4 card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
           <div className="flex flex flex-wrap justify-center items-center ">
             <FiCode />
           </div>
           <div className="card-body">
-            <h2 className="card-title">Highlight</h2>
+            <h2 className="card-title text-primary">Highlight</h2>
             <p>Automaticaly highlight your code.</p>
           </div>
         </div>
 
-        <div className="card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
+        <div className="py-4 card card-compact w-96 bg-base-300 shadow-xl 80 md:h-40 lg:h-40">
           <div className="flex flex-wrap justify-center items-center">
             <FiCode />
           </div>
           <div className="card-body">
-            <h2 className="card-title">Easy Search</h2>
+            <h2 className="card-title text-secondary">Easy Search</h2>
             <p>Search your snippet easily using filter.</p>
           </div>
         </div>
