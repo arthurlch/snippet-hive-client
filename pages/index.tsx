@@ -27,7 +27,7 @@ function CodeBlockForHero(props: CodeBlock) {
 function Hero() {
   const blockLanguage = 'javascript';
   const showLineNumbers = false;
-  const blockText = `const sum = (a: number, b: number): number => a + b;`;
+  const blockText = `console.log("rust >> JavaScript")`;
 
   return (
     <div className="h-screen columns-1 hero  bg-base-200">
@@ -87,6 +87,17 @@ function FeatureCards() {
             <p>Search your snippet easily using filter.</p>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function CallToAct() {
+  return (
+    <div className="py-5">
+      <div className="flex">
+        <h4>Try for free today</h4>
+        <p>Join thousands of developers who rely on SnippetHive every day.</p>
       </div>
     </div>
   );
