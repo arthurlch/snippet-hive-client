@@ -1,6 +1,7 @@
 import Layout from './_layout';
 import { CodeBlock, dracula } from 'react-code-blocks';
-import { FiCode } from 'react-icons/fi';
+import { FiCode, FiSearch } from 'react-icons/fi';
+import { AiOutlineHighlight } from 'react-icons/ai';
 
 interface CodeBlock {
   language: string;
@@ -60,7 +61,7 @@ function FeatureCards() {
       <div className=" flex flex-wrap justify-center items-center gap-6 columns-1 py-28 my-23">
         <div className=" py-4 card card-compact w-96 bg-base-100 shadow-xl 80 md:h-40 lg:h-40">
           <div className="flex flex-wrap justify-center items-center">
-            <FiCode />
+            <FiCode style={{ fontSize: '1.5rem' }} />
           </div>
           <div className="card-body">
             <h2 className="card-title text-secondary">Any Language</h2>
@@ -70,7 +71,7 @@ function FeatureCards() {
 
         <div className=" py-4 card card-compact w-96 shadow-xl 80 md:h-40 lg:h-40 bg-base-100">
           <div className="flex flex flex-wrap justify-center items-center ">
-            <FiCode />
+            <AiOutlineHighlight style={{ fontSize: '1.5rem' }} />
           </div>
           <div className="card-body">
             <h2 className="card-title text-accent">Highlight</h2>
@@ -80,7 +81,7 @@ function FeatureCards() {
 
         <div className="py-4 card card-compact w-96  shadow-xl 80 md:h-40 lg:h-40 bg-base-100">
           <div className="flex flex-wrap justify-center items-center">
-            <FiCode />
+            <FiSearch style={{ fontSize: '1.5rem' }} />
           </div>
           <div className="card-body">
             <h2 className="card-title text-primary">Easy Search</h2>
@@ -91,14 +92,25 @@ function FeatureCards() {
     </div>
   );
 }
-
 function CallToAct() {
   return (
-    <div className="py-5">
-      <div className="flex">
-        <h4>Try for free today</h4>
-        <p>Join thousands of developers who rely on SnippetHive every day.</p>
+    <div className="py-10 flex-col flex-wrap justify-content-center">
+      <div className=" justify-center">
+        <div className="flex py-3 flex-col items-center">
+          <h4 className="text-center text-3xl">Try for free today</h4>
+        </div>
+        <div className="flex flex-col items-center pb-5">
+          <p className="text-center">
+            Join thousands of developers who rely on SnippetHive every day.
+          </p>
+        </div>
+        <div className="flex py-8 flex-col items-center">
+          <button className=" flex-col btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+            SIGNUP NOW
+          </button>
+        </div>
       </div>
+      <div className="divider"></div>
     </div>
   );
 }
@@ -108,6 +120,7 @@ export default function Home() {
     <Layout>
       <Hero />
       <FeatureCards />
+      <CallToAct />
     </Layout>
   );
 }
