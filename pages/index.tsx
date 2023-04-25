@@ -1,4 +1,4 @@
-import Layout from './_layout';
+import Layout from '@/modules/layout/_layout';
 import { CodeBlock, dracula } from 'react-code-blocks';
 import { FiCode, FiSearch } from 'react-icons/fi';
 import { AiOutlineHighlight } from 'react-icons/ai';
