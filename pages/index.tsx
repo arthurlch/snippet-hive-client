@@ -70,7 +70,7 @@ function FeatureCards() {
         </div>
 
         <div className=' py-4 card card-compact w-96 shadow-xl 80 md:h-40 lg:h-40 bg-base-100'>
-          <div className='flex flex flex-wrap justify-center items-center '>
+          <div className='flex flex-wrap justify-center items-center '>
             <AiOutlineHighlight style={{ fontSize: '1.5rem' }} />
           </div>
           <div className='card-body'>
