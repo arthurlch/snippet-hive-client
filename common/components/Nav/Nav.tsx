@@ -11,6 +11,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
+import ChangeThemeButton from './ChangeThemeButton';
 
 const HEADER_HEIGHT = rem(25);
 
@@ -101,6 +102,7 @@ interface HeaderResponsiveProps {
 export default function Nav({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
+  const [isMobile, setIsMobile] = useState('(max-width: 768px)');
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
@@ -142,6 +144,7 @@ export default function Nav({ links }: HeaderResponsiveProps) {
             </Paper>
           )}
         </Transition>
+        {isMobile && <ChangeThemeButton />}
       </Container>
     </Header>
   );
