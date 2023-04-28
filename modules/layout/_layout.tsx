@@ -1,5 +1,6 @@
 import { AppShell } from '@mantine/core';
 import Nav from '@/common/components/Nav/Nav';
+import { Footer } from '@/common/components/Footer/Footer';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const navLinks = [
@@ -24,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <AppShell>
       <Nav links={navLinks} />
       {children}
+      <Footer links={[]} />
     </AppShell>
   );
 }
