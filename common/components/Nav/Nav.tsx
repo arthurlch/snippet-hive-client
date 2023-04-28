@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
-import ChangeThemeButton from './ChangeThemeButton';
+import NavThemeButton from './NavThemeButton';
 
 const HEADER_HEIGHT = rem(25);
 
@@ -144,7 +144,7 @@ export default function Nav({ links }: HeaderResponsiveProps) {
             </Paper>
           )}
         </Transition>
-        {isMobile && <ChangeThemeButton />}
+        {isMobile && <NavThemeButton />}
       </Container>
     </Header>
   );

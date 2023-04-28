@@ -2,7 +2,7 @@ import { ActionIcon, useMantineColorScheme } from '@mantine/core';
 import { MdOutlineLightMode } from 'react-icons/md';
 import { MdOutlineNightlight } from 'react-icons/md';
 
-export default function ChangeThemeButton() {
+export default function NavThemeButton() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
 

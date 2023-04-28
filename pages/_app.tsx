@@ -17,7 +17,24 @@ export default function App({ Component, pageProps }: AppProps) {
       toggleColorScheme={toggleColorScheme}
     >
       <MantineProvider
-        theme={{ colorScheme }}
+        theme={{
+          colorScheme,
+          primaryShade: 6,
+          primaryColor: 'grape',
+          colors: {
+            secondary: [
+              '#5EF2BD',
+              '#75F7C9',
+              '#8CFBD5',
+              '#A2FFDF',
+              '#B9FFE9',
+              '#D0FFEF',
+              '#E7FFF8',
+              '#FDFFFF',
+              '#FFFFFF',
+            ],
+          },
+        }}
         withGlobalStyles
         withNormalizeCSS
       >
