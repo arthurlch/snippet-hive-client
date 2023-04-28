@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     textAlign: 'center',
     fontWeight: 800,
-    fontSize: rem(40),
+    fontSize: rem(65),
     letterSpacing: -1,
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     marginBottom: theme.spacing.xs,
@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
 
   description: {
     textAlign: 'center',
-
+    fontSize: rem(21),
     [theme.fn.smallerThan('xs')]: {
       textAlign: 'left',
       fontSize: theme.fontSizes.md,
@@ -80,31 +80,29 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeroText() {
+export default function Hero(): JSX.Element {
   const { classes } = useStyles();
 
   return (
     <Container className={classes.wrapper} size={1400}>
       <div className={classes.inner}>
         <Title className={classes.title}>
-          Automated AI{' '}
+          Simple & Useful{' '}
           <Text component="span" className={classes.highlight} inherit>
-            code reviews
-          </Text>{' '}
-          for any stack
+            snippet manager
+          </Text>
         </Title>
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
-            Build more reliable software with AI companion. AI is also trained
-            to detect lazy developers who do nothing and just complain on
-            Twitter.
+            Unleash your coding potential with our centralized snippet manager -
+            store, share, and access your code snippets securely from anywhere!
           </Text>
         </Container>
 
         <div className={classes.controls}>
           <Button className={classes.control} size="lg">
-            Try for Free
+            Try for free now!
           </Button>
         </div>
       </div>

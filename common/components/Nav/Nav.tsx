@@ -1,26 +1,47 @@
+import { useState } from 'react';
 import {
   createStyles,
-  Menu,
-  Center,
   Header,
   Container,
   Group,
-  Button,
   Burger,
+  Paper,
+  Transition,
   rem,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { FiChevronDown } from 'react-icons/fi';
-import { RiCodeBoxLine } from 'react-icons/ri';
+import { AiFillCodeSandboxCircle } from 'react-icons/ai';
 
-const HEADER_HEIGHT = rem(60);
+const HEADER_HEIGHT = rem(25);
 
 const useStyles = createStyles((theme) => ({
-  inner: {
-    height: HEADER_HEIGHT,
+  root: {
+    position: 'relative',
+    zIndex: 1,
+  },
+
+  dropdown: {
+    position: 'absolute',
+    top: HEADER_HEIGHT,
+    left: 0,
+    right: 0,
+    zIndex: 0,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopWidth: 0,
+    overflow: 'hidden',
+
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: '100%',
+    paddingBottom: rem(27),
   },
 
   links: {
@@ -54,84 +75,73 @@ const useStyles = createStyles((theme) => ({
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
     },
+
+    [theme.fn.smallerThan('sm')]: {
+      borderRadius: 0,
+      padding: theme.spacing.md,
+    },
   },
 
-  linkLabel: {
-    marginRight: rem(5),
+  linkActive: {
+    '&, &:hover': {
+      backgroundColor: theme.fn.variant({
+        variant: 'light',
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
+        .color,
+    },
   },
 }));
 
-interface HeaderActionProps {
-  links: {
-    link: string;
-    label: string;
-    links: { link: string; label: string }[];
-  }[];
+interface HeaderResponsiveProps {
+  links: { link: string; label: string }[];
 }
 
-export default function Nav({ links }: HeaderActionProps): JSX.Element {
-  const { classes } = useStyles();
-  const [opened, { toggle }] = useDisclosure(false);
-  const items = links.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
+export default function Nav({ links }: HeaderResponsiveProps) {
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [active, setActive] = useState(links[0].link);
+  const { classes, cx } = useStyles();
 
-    if (menuItems) {
-      return (
-        <Menu
-          key={link.label}
-          trigger="hover"
-          transitionProps={{ exitDuration: 0 }}
-          withinPortal
-        >
-          <Menu.Target>
-            <a
-              href={link.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-                <FiChevronDown size={rem(12)} />
-              </Center>
-            </a>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
-    return (
-      <a
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </a>
-    );
-  });
+  const items = links.map((link) => (
+    <a
+      key={link.label}
+      href={link.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.link,
+      })}
+      onClick={(event) => {
+        event.preventDefault();
+        setActive(link.link);
+        close();
+      }}
+    >
+      {link.label}
+    </a>
+  ));
 
   return (
-    <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={120}>
-      <Container className={classes.inner} fluid>
-        <Group>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            className={classes.burger}
-            size="sm"
-          />
-          <RiCodeBoxLine size={28} />
-        </Group>
+    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+      <Container className={classes.header}>
+        <AiFillCodeSandboxCircle size={32} color="magenta" />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Button radius="xl" h={30}>
-          Get early access
-        </Button>
+
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size="sm"
+        />
+
+        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+          {(styles) => (
+            <Paper className={classes.dropdown} withBorder style={styles}>
+              {items}
+            </Paper>
+          )}
+        </Transition>
       </Container>
     </Header>
   );

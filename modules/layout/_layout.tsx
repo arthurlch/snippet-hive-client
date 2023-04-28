@@ -8,18 +8,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     {
       link: '/',
       label: 'Home',
-      links: [
-        { link: '/about', label: 'About' },
-        { link: '/contact', label: 'Contact' },
-      ],
+      links: [],
     },
     {
-      link: '/blog',
-      label: 'Blog',
-      links: [
-        { link: '/posts', label: 'Posts' },
-        { link: '/categories', label: 'Categories' },
-      ],
+      link: '/snippets',
+      label: 'Snippets',
+      links: [],
+    },
+    {
+      link: '/profile',
+      label: 'Profile',
+      links: [],
     },
   ];
 
