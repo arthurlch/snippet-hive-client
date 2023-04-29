@@ -8,16 +8,12 @@ export default function NavThemeButton() {
 
   return (
     <ActionIcon
-      variant="outline"
-      color={dark ? 'yellow' : 'blue'}
+      variant='outline'
+      color={dark ? 'yellow' : 'primary'}
       onClick={() => toggleColorScheme()}
-      title="Toggle color scheme"
+      title='Toggle color scheme'
     >
-      {dark ? (
-        <MdOutlineLightMode size="1.1rem" />
-      ) : (
-        <MdOutlineNightlight size="1.1rem" />
-      )}
+      {dark ? <MdOutlineLightMode size='1.1rem' /> : <MdOutlineNightlight size='1.1rem' />}
     </ActionIcon>
   );
 }
