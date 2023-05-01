@@ -9,7 +9,7 @@ export default function NavThemeButton() {
   return (
     <ActionIcon
       variant='outline'
-      color={dark ? 'yellow' : 'primary'}
+      color={dark ? 'yellow' : 'indigo'}
       onClick={() => toggleColorScheme()}
       title='Toggle color scheme'
     >
