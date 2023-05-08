@@ -12,6 +12,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
 import NavThemeButton from './NavThemeButton';
+import Link from 'next/link';
 
 const HEADER_HEIGHT = rem(25);
 
@@ -99,26 +100,24 @@ export default function Nav({ links }: HeaderResponsiveProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-        close();
-      }}
-    >
+    <Link href={link.link} key={link.label}   className={cx(classes.link, {
+      [classes.linkActive]: active === link.link,
+    })}
+    onClick={() => {
+      close();
+    }}>
+    
+    
       {link.label}
-    </a>
+    
+  </Link>
+
   ));
 
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <AiFillCodeSandboxCircle size={32} color='black' />
+        <AiFillCodeSandboxCircle size={32} color='#e64980' />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
