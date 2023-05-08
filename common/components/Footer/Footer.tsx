@@ -49,7 +49,7 @@ export function Footer({ links }: FooterProps) {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <AiFillCodeSandboxCircle size={28} />
+        <AiFillCodeSandboxCircle size={28} color="#be4bdb" />
         <Group className={classes.links}>{items}</Group>
       </Container>
     </div>

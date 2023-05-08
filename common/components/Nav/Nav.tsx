@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import {
   createStyles,
   Header,
@@ -106,26 +107,24 @@ export default function Nav({ links }: HeaderResponsiveProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
+    <Link
       href={link.link}
+      key={link.label}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
+      onClick={() => {
         close();
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <AiFillCodeSandboxCircle size={32} color="magenta" />
+        <AiFillCodeSandboxCircle size={32} color="#be4bdb" />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
