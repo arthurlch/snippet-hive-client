@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import {
   createStyles,
   Header,
@@ -65,12 +64,18 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    color:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     },
 
     [theme.fn.smallerThan('sm')]: {
@@ -85,7 +90,8 @@ const useStyles = createStyles((theme) => ({
         variant: 'light',
         color: theme.primaryColor,
       }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
+        .color,
     },
   },
 }));
@@ -101,7 +107,6 @@ export default function Nav({ links }: HeaderResponsiveProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-<<<<<<< HEAD
     <Link
       href={link.link}
       key={link.label}
@@ -114,37 +119,24 @@ export default function Nav({ links }: HeaderResponsiveProps) {
     >
       {link.label}
     </Link>
-=======
-    <Link href={link.link} key={link.label}   className={cx(classes.link, {
-      [classes.linkActive]: active === link.link,
-    })}
-    onClick={() => {
-      close();
-    }}>
-    
-    
-      {link.label}
-    
-  </Link>
-
->>>>>>> d761310e93166f2e50abb5ef78679e9e156d62e2
   ));
 
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-<<<<<<< HEAD
-        <AiFillCodeSandboxCircle size={32} color="#be4bdb" />
-=======
-        <AiFillCodeSandboxCircle size={32} color='#e64980' />
->>>>>>> d761310e93166f2e50abb5ef78679e9e156d62e2
+        <AiFillCodeSandboxCircle size={32} color="#A1EEC9" />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
 
-        <Burger opened={opened} onClick={toggle} className={classes.burger} size='sm' />
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          className={classes.burger}
+          size="sm"
+        />
 
-        <Transition transition='pop-top-right' duration={200} mounted={opened}>
+        <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
               {items}
