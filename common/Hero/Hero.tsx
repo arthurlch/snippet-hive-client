@@ -1,11 +1,4 @@
-import {
-  createStyles,
-  Title,
-  Text,
-  Button,
-  Container,
-  rem,
-} from '@mantine/core';
+import { createStyles, Title, Text, Button, Container, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -40,8 +33,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   highlight: {
-    color:
-      theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
+    color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
   },
 
   description: {
@@ -88,20 +80,24 @@ export default function Hero(): JSX.Element {
       <div className={classes.inner}>
         <Title className={classes.title}>
           Simple & Useful{' '}
-          <Text component="span" className={classes.highlight} inherit>
+          <Text component='span' className={classes.highlight} inherit>
             snippet manager
           </Text>
         </Title>
 
         <Container p={0} size={600}>
-          <Text size="lg" color="dimmed" className={classes.description}>
-            Unleash your coding potential with our centralized snippet manager -
-            store, share, and access your code snippets securely from anywhere!
+          <Text size='lg' color='dimmed' className={classes.description}>
+            Unleash your coding potential with our centralized snippet manager - store, share, and
+            access your code snippets securely from anywhere!
           </Text>
         </Container>
 
         <div className={classes.controls}>
+<<<<<<< HEAD
           <Button className={classes.control} size="lg" variant="outline">
+=======
+          <Button className={classes.control} variant='outline' size='lg'>
+>>>>>>> d761310e93166f2e50abb5ef78679e9e156d62e2
             Try for free now!
           </Button>
         </div>
