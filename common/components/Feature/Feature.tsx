@@ -65,7 +65,7 @@ interface FeatureProps {
 function Feature({ icon: Icon, title, description }: FeatureProps) {
   return (
     <div>
-      <ThemeIcon variant="light" size={40} radius={40}>
+      <ThemeIcon variant="outline" size={40} radius={40} color="primary">
         <Icon size="1.1rem" stroke={1.5} />
       </ThemeIcon>
       <Text mt="sm" mb={7}>
@@ -100,7 +100,6 @@ const useStyles = createStyles((theme) => ({
     textAlign: 'center',
     fontSize: rem(15),
     fontWeight: 300,
-
     [theme.fn.smallerThan('sm')]: {
       textAlign: 'left',
     },

@@ -124,7 +124,7 @@ export default function Nav({ links }: HeaderResponsiveProps) {
   return (
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
-        <AiFillCodeSandboxCircle size={32} color="#A1EEC9" />
+        <AiFillCodeSandboxCircle size={32} color="#BD6EF5" />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

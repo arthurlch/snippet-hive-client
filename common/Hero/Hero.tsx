@@ -101,7 +101,12 @@ export default function Hero(): JSX.Element {
         </Container>
 
         <div className={classes.controls}>
-          <Button className={classes.control} size="lg" variant="outline">
+          <Button
+            className={classes.control}
+            size="lg"
+            variant="outline"
+            color="secondary"
+          >
             Try for free now!
           </Button>
         </div>
