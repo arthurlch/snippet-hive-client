@@ -4,10 +4,10 @@ import {
   Navbar,
   UnstyledButton,
   Tooltip,
-  Title,
   rem,
+  Autocomplete,
 } from '@mantine/core';
-import { AiFillHome } from 'react-icons/ai';
+import { AiFillHome, AiOutlineSearch } from 'react-icons/ai';
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
 
 const useStyles = createStyles((theme) => ({
@@ -118,7 +118,15 @@ const useStyles = createStyles((theme) => ({
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
   },
+  search_wrapper: {
+    margin: '1rem',
+  },
 
+  search: {
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
+    },
+  },
   linkActive: {
     '&, &:hover': {
       borderLeftColor: theme.fn.variant({
@@ -134,7 +142,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mainLinksMockdata = [{ icon: AiFillHome, label: 'AiFillHome' }];
+const mainLinksMockdata = [{ icon: AiFillHome, label: 'All' }];
 
 const linksMockdata = [
   'Security',
@@ -152,7 +160,7 @@ const linksMockdata = [
 
 export default function DoubleNavbar() {
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Releases');
+  const [active, setActive] = useState('All');
   const [activeLink, setActiveLink] = useState('Settings');
 
   const mainLinks = mainLinksMockdata.map((link) => (
@@ -200,9 +208,14 @@ export default function DoubleNavbar() {
           {mainLinks}
         </div>
         <div className={classes.main}>
-          <Title order={4} className={classes.title}>
-            {active}
-          </Title>
+          <div className={classes.search_wrapper}>
+            <Autocomplete
+              className={classes.search}
+              placeholder="Search"
+              icon={<AiOutlineSearch size="1rem" />}
+              data={['React', 'Angular', 'Vue', 'Next.js', 'Svelte']}
+            />
+          </div>
 
           {links}
         </div>
