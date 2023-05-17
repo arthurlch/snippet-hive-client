@@ -2,17 +2,14 @@ import { useState } from 'react';
 import {
   createStyles,
   Navbar,
-  UnstyledButton,
-  Tooltip,
   rem,
   Autocomplete,
   useMantineTheme,
-  Text,
 } from '@mantine/core';
 import { AiFillHome, AiOutlineSearch } from 'react-icons/ai';
 import NavThemeButton from '../ToggleThemeButton/NavThemeButton';
 import Link from 'next/link';
-import { MdOutlineBorderAll } from 'react-icons/md';
+import { MainLinks } from './MainLinks';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -39,40 +36,6 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[0],
   },
 
-  mainLink: {
-    width: rem(164),
-    height: rem(44),
-    borderRadius: theme.radius.md,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[5]
-          : theme.colors.gray[0],
-    },
-  },
-
-  mainLinkActive: {
-    '&, &:hover': {
-      backgroundColor: theme.fn.variant({
-        variant: 'light',
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
-        .color,
-    },
-  },
-
-  mainLinkLabel: {
-    paddingLeft: '0.2rem',
-  },
   title: {
     boxSizing: 'border-box',
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -162,20 +125,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mainLinksMockdata = [{ icon: MdOutlineBorderAll, label: 'All' }];
-
 const linksMockdata = [
-  'Security',
-  'Settings',
-  'Dashboard',
-  'Releases',
-  'Account',
-  'Orders',
-  'Clients',
-  'Databases',
-  'Pull Requests',
-  'Open Issues',
-  'Wiki pages',
+  'Flask Auth',
+  'React Todo List',
+  'SQL Query PrTbr',
+  'Vue Layout',
+  'Mantiner header nav',
+  'Tailwind spaggethi',
+  'Bootstrap Footer',
 ];
 
 export default function DoubleNavbar() {
@@ -184,28 +141,6 @@ export default function DoubleNavbar() {
   const [activeLink, setActiveLink] = useState('Settings');
   const theme = useMantineTheme();
   const iconColor = theme.colorScheme === 'dark' ? '#FFFFFF' : '#1d1a1f';
-
-  const mainLinks = mainLinksMockdata.map((link) => (
-    <Tooltip
-      label={link.label}
-      position="right"
-      withArrow
-      transitionProps={{ duration: 0 }}
-      key={link.label}
-    >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        className={cx(classes.mainLink, {
-          [classes.mainLinkActive]: link.label === active,
-        })}
-      >
-        <link.icon size="1rem" stroke={(1.5).toString()} />
-        <Text className={classes.mainLinkLabel} size="1rem">
-          {link.label}
-        </Text>
-      </UnstyledButton>
-    </Tooltip>
-  ));
 
   const links = linksMockdata.map((link) => (
     <a
@@ -235,7 +170,7 @@ export default function DoubleNavbar() {
               <NavThemeButton />
             </div>
           </div>
-          {mainLinks}
+          <MainLinks />
         </div>
         <div className={classes.main}>
           <div className={classes.search_wrapper}>
