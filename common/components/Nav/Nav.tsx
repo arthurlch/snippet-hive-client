@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
-import NavThemeButton from './NavThemeButton';
+import NavThemeButton from '../ToggleThemeButton/NavThemeButton';
 import Link from 'next/link';
 
 const HEADER_HEIGHT = rem(25);

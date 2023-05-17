@@ -6,9 +6,13 @@ import {
   Tooltip,
   rem,
   Autocomplete,
+  useMantineTheme,
+  Text,
 } from '@mantine/core';
 import { AiFillHome, AiOutlineSearch } from 'react-icons/ai';
-import { AiFillCodeSandboxCircle } from 'react-icons/ai';
+import NavThemeButton from '../ToggleThemeButton/NavThemeButton';
+import Link from 'next/link';
+import { MdOutlineBorderAll } from 'react-icons/md';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -16,7 +20,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   aside: {
-    flex: `0 0 ${rem(60)}`,
+    flex: `0 0 ${rem(200)}`,
     backgroundColor:
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     display: 'flex',
@@ -36,7 +40,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   mainLink: {
-    width: rem(44),
+    width: rem(164),
     height: rem(44),
     borderRadius: theme.radius.md,
     display: 'flex',
@@ -66,6 +70,9 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  mainLinkLabel: {
+    paddingLeft: '0.2rem',
+  },
   title: {
     boxSizing: 'border-box',
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -85,14 +92,27 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    height: rem(60),
+
+    height: rem(53),
     paddingTop: theme.spacing.md,
+    paddingBottom: theme.spacing.md,
     borderBottom: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
     }`,
     marginBottom: theme.spacing.xl,
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
   },
 
+  logo_wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+  },
   link: {
     boxSizing: 'border-box',
     display: 'block',
@@ -142,7 +162,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mainLinksMockdata = [{ icon: AiFillHome, label: 'All' }];
+const mainLinksMockdata = [{ icon: MdOutlineBorderAll, label: 'All' }];
 
 const linksMockdata = [
   'Security',
@@ -162,6 +182,8 @@ export default function DoubleNavbar() {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('All');
   const [activeLink, setActiveLink] = useState('Settings');
+  const theme = useMantineTheme();
+  const iconColor = theme.colorScheme === 'dark' ? '#FFFFFF' : '#1d1a1f';
 
   const mainLinks = mainLinksMockdata.map((link) => (
     <Tooltip
@@ -177,7 +199,10 @@ export default function DoubleNavbar() {
           [classes.mainLinkActive]: link.label === active,
         })}
       >
-        <link.icon size="1.4rem" stroke={(1.5).toString()} />
+        <link.icon size="1rem" stroke={(1.5).toString()} />
+        <Text className={classes.mainLinkLabel} size="1rem">
+          {link.label}
+        </Text>
       </UnstyledButton>
     </Tooltip>
   ));
@@ -199,11 +224,16 @@ export default function DoubleNavbar() {
   ));
 
   return (
-    <Navbar height={750} width={{ sm: 300 }}>
+    <Navbar height={750} width={{ sm: 440 }}>
       <Navbar.Section grow className={classes.wrapper}>
         <div className={classes.aside}>
           <div className={classes.logo}>
-            <AiFillCodeSandboxCircle size={28} color="#BD6EF5" />
+            <Link className={classes.logo_wrapper} href="/">
+              <AiFillHome size={22} color={iconColor} />
+            </Link>
+            <div className={classes.logo_wrapper}>
+              <NavThemeButton />
+            </div>
           </div>
           {mainLinks}
         </div>
@@ -216,7 +246,6 @@ export default function DoubleNavbar() {
               data={['React', 'Angular', 'Vue', 'Next.js', 'Svelte']}
             />
           </div>
-
           {links}
         </div>
       </Navbar.Section>
