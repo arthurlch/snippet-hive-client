@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   createStyles,
   Navbar,
@@ -9,7 +8,9 @@ import {
 import { AiFillHome, AiOutlineSearch } from 'react-icons/ai';
 import NavThemeButton from '../ToggleThemeButton/NavThemeButton';
 import Link from 'next/link';
-import { MainLinks } from './MainLinks';
+import { SidenavMainLinks } from './SidenavMainLinks';
+import SidenavSnippets from './SidenavSnippets';
+import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -76,31 +77,7 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: '1rem',
     paddingRight: '1rem',
   },
-  link: {
-    boxSizing: 'border-box',
-    display: 'block',
-    textDecoration: 'none',
-    borderTopRightRadius: theme.radius.md,
-    borderBottomRightRadius: theme.radius.md,
-    color:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    padding: `0 ${theme.spacing.md}`,
-    fontSize: theme.fontSizes.sm,
-    marginRight: theme.spacing.md,
-    fontWeight: 500,
-    height: rem(44),
-    lineHeight: rem(44),
 
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[5]
-          : theme.colors.gray[1],
-      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    },
-  },
   search_wrapper: {
     margin: '1rem',
   },
@@ -108,19 +85,6 @@ const useStyles = createStyles((theme) => ({
   search: {
     [theme.fn.smallerThan('xs')]: {
       display: 'none',
-    },
-  },
-  linkActive: {
-    '&, &:hover': {
-      borderLeftColor: theme.fn.variant({
-        variant: 'filled',
-        color: theme.primaryColor,
-      }).background,
-      backgroundColor: theme.fn.variant({
-        variant: 'filled',
-        color: theme.primaryColor,
-      }).background,
-      color: theme.white,
     },
   },
 }));
@@ -137,26 +101,9 @@ const linksMockdata = [
 
 export default function DoubleNavbar() {
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState('All');
   const [activeLink, setActiveLink] = useState('Settings');
   const theme = useMantineTheme();
   const iconColor = theme.colorScheme === 'dark' ? '#FFFFFF' : '#1d1a1f';
-
-  const links = linksMockdata.map((link) => (
-    <a
-      className={cx(classes.link, {
-        [classes.linkActive]: activeLink === link,
-      })}
-      href="/"
-      onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(link);
-      }}
-      key={link}
-    >
-      {link}
-    </a>
-  ));
 
   return (
     <Navbar height={750} width={{ sm: 440 }}>
@@ -170,7 +117,7 @@ export default function DoubleNavbar() {
               <NavThemeButton />
             </div>
           </div>
-          <MainLinks />
+          <SidenavMainLinks />
         </div>
         <div className={classes.main}>
           <div className={classes.search_wrapper}>
@@ -181,7 +128,10 @@ export default function DoubleNavbar() {
               data={['React', 'Angular', 'Vue', 'Next.js', 'Svelte']}
             />
           </div>
-          {links}
+          <SidenavSnippets
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
+          />
         </div>
       </Navbar.Section>
     </Navbar>

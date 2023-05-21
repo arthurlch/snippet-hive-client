@@ -45,9 +45,15 @@ const useStyles = createStyles((theme) => ({
   mainLinkLabel: {
     paddingLeft: '0.2rem',
   },
+
+  text: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
-export const MainLinks = () => {
+export const SidenavMainLinks = () => {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('All');
 
@@ -59,17 +65,24 @@ export const MainLinks = () => {
       transitionProps={{ duration: 0 }}
       key={link.label}
     >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        className={cx(classes.mainLink, {
-          [classes.mainLinkActive]: link.label === active,
-        })}
-      >
-        <link.icon size="1rem" stroke={(1.5).toString()} />
-        <Text className={classes.mainLinkLabel} size="1rem">
-          {link.label}
-        </Text>
-      </UnstyledButton>
+      <div>
+        <UnstyledButton
+          onClick={() => setActive(link.label)}
+          className={cx(classes.mainLink, {
+            [classes.mainLinkActive]: link.label === active,
+          })}
+        >
+          <link.icon size="1rem" stroke={(1.5).toString()} />
+          <Text className={classes.mainLinkLabel} size="1rem">
+            {link.label}
+          </Text>
+        </UnstyledButton>
+        <div>
+          <Text className={classes.text} size="1rem">
+            Folders
+          </Text>
+        </div>
+      </div>
     </Tooltip>
   ));
 
