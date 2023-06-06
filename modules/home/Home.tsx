@@ -1,5 +1,5 @@
 import FeaturesGrid from '@/common/components/Feature/Feature';
-import Hero from '@/common/Hero/Hero';
+import Hero from '@/common/components/Hero/Hero';
 
 export default function Home(): JSX.Element {
   return (
